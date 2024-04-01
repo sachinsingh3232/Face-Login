@@ -63,7 +63,7 @@ const Login = () => {
             descriptors: Object.values(descriptors)
         }
         try {
-            await axios.post(`http://localhost:9000/api/user/register`, inputs);
+            await axios.post(`https://codebugged-ai-back.vercel.app/api/user/register`, inputs);
             Navigate('/login');
         } catch (e) {
             console.log(e.response.data)
