@@ -7,15 +7,19 @@ import { useNavigate } from 'react-router-dom';
 const API_KEY = "3d34edc9";
 
 const MovieList = () => {
-    const [searchQuery, updateSearchQuery] = useState();
+    const [searchQuery, updateSearchQuery] = useState('');
     const [MovieList, updateMovieList] = useState([]);
     const [selectedMovie, onMovieSelect] = useState();
     const [timeoutId, updateTimeoutId] = useState();
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
     useEffect(() => {
-        if (!JSON.parse(localStorage.getItem("user"))) navigate('/login');
+        if (!JSON.parse(localStorage.getItem("user"))) {navigate('/login') return };
         else setUser(JSON.parse(localStorage.getItem("user")))
+        const response = await Axios.get(
+            `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`,
+        );
+        updateMovieList(response.data.Search);
     }, [])
 
 
@@ -23,7 +27,7 @@ const MovieList = () => {
         const response = await Axios.get(
             `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`,
         );
-        console.log(response.data.Search);
+        // console.log(response.data.Search);
         updateMovieList(response.data.Search);
     };
     const onTextChange = (e) => {
