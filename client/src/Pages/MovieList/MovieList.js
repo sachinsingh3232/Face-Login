@@ -12,10 +12,11 @@ const MovieList = () => {
     const [selectedMovie, onMovieSelect] = useState();
     const [timeoutId, updateTimeoutId] = useState();
     const navigate = useNavigate()
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
-    if (!user) {
-        navigate('/login')
-    }
+    const [user, setUser] = useState(null)
+    useEffect(() => {
+        if (!JSON.parse(localStorage.getItem("user"))) navigate('/login');
+        else setUser(JSON.parse(localStorage.getItem("user")))
+    }, [])
 
 
     const fetchData = async (searchString) => {
