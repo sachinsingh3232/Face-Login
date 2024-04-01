@@ -59,7 +59,7 @@ const Login = () => {
         }
         try {
             //api call
-            const res = await axios.post(`http://localhost:9000/api/user/login`, inputs);
+            const res = await axios.post(`https://codebugged-ai-back.vercel.app/api/user/login`, inputs);
             localStorage.setItem("user", JSON.stringify(res.data));
             navigate('/');
         } catch (e) {
