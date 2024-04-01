@@ -25,7 +25,7 @@ const MovieList = () => {
 
     const fetchData = async (searchString) => {
         const response = await Axios.get(
-            `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`,
+            `https://www.omdbapi.com/?s=avengers&apikey=${API_KEY}`,
         );
         // console.log(response.data.Search);
         updateMovieList(response.data.Search);
