@@ -14,8 +14,11 @@ const MovieList = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
     useEffect(() => {
-        if (!JSON.parse(localStorage.getItem("user"))) {navigate('/login') return };
-        else setUser(JSON.parse(localStorage.getItem("user")))
+        if (!JSON.parse(localStorage.getItem("user"))) {
+            navigate('/login');
+            return;
+        };
+        setUser(JSON.parse(localStorage.getItem("user")))
         const response = await Axios.get(
             `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`,
         );
