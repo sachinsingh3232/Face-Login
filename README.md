@@ -116,9 +116,9 @@ Following are the major dev-dependencies of the project:
 
 Inside frontend folder:
 
--"start": "react-scripts start",
--"build": "react-scripts build",
--"test": "react-scripts test",
+-"start": "react-scripts start"
+-"build": "react-scripts build"
+-"test": "react-scripts test"
 -"eject": "react-scripts eject"
 
 ## Useful Links
