@@ -5,11 +5,12 @@ const faceapi = require('face-api.js');
 
 const Register = async (req, res) => {
     try {
-        let user = await User.findOne({ email: req.body.email })
+        const Email=req.body.email.toLowerCase();
+        let user = await User.findOne({ email:Email  })
         if (user) return res.status(409).json("user already exist !");
         // console.log(first)
         await User.create({
-            email: req.body.email,
+            email: Email,
             name: req.body.name,
             descriptor: req.body.descriptors
         })
@@ -35,7 +36,8 @@ const Login = async (req, res) => {
             return res.status(401).json("Authentication failed !");
         }
         else {
-            let user = await User.findOne({ email: req.body.email })
+            const Email=req.body.email.toLowerCase();
+            let user = await User.findOne({ email: Email })
             if (!user) return res.status(404).json("No User with this email !");
 
             const distanceThreshold = 0.4; // Adjust as needed
