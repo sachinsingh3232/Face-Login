@@ -78,3 +78,10 @@
     object-fit: cover;
     border-radius: 5px;
 }
+.logout{
+    padding:5px 10px;
+    background-color: white;
+    color:black;
+    cursor: pointer;
+    margin-right: 10px;
+}
