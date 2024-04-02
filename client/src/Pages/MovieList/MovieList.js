@@ -19,14 +19,7 @@ const MovieList = () => {
             return;
         };
         setUser(JSON.parse(localStorage.getItem("user")))
-        const fetchData1 = async (searchString) => {
-        const response = await Axios.get(
-            `https://www.omdbapi.com/?s=avengers&apikey=${API_KEY}`,
-        );
-        // console.log(response.data.Search);
-        updateMovieList(response.data.Search);
-    };
-        fetchData1();
+        fetchData('avengers');
     }, [])
 
 
